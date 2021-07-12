@@ -1,0 +1,8 @@
+{
+    "db": {
+            "url" : "mongodb+srv://raghav:testtest@cluster0.epdki.mongodb.net/users?retryWrites=true&w=majority",
+            "name" :"user-task",
+            "user" :"raghav",
+            "password" :"testtest"
+    }
+}
