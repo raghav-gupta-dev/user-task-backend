@@ -1,8 +1,11 @@
 from os import name
+from re import X
 from flask import Flask, request, jsonify
 from models import user, task  # call model file
 from flask_cors import CORS  # to avoid cors error in different frontend like react js or any other
 from bson import ObjectId
+from types import SimpleNamespace
+import json
 
 
 app = Flask(__name__)
@@ -43,6 +46,9 @@ def update_users(user_id):
 def delete_users(user_id):
     if request.method == "DELETE":
         user.delete(user_id)
+        x =task.find({'owner':user_id})
+        for i in x :
+            task.delete(i['_id'])
         return "Record Deleted"
 
 
