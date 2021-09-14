@@ -12,12 +12,12 @@ app = Flask(__name__)
 CORS(app)
 
 user=user.User()
-task= task.Task()
+task= task.Task() 
 
 @app.route('/', methods=['GET'])
 def test():
     if request.method == "GET":
-        return jsonify({"response":"chal raha hai"})
+        return jsonify({"response":"working"})
 
 #user get request
 @app.route('/users/', methods=['GET'])
@@ -54,7 +54,7 @@ def delete_users(user_id):
 
 
 
-#taks get request
+#task get request
 @app.route('/task/', methods=['GET'])
 def get_tasks():
     return jsonify(task.find({})), 200
@@ -75,6 +75,7 @@ def update_tasks(task_id):
         taskName = request.json['taskName']
         response = task.update(task_id, {'taskName': taskName})
         return response, 201
+
 
 #task delete request
 @app.route('/task/<string:task_id>/', methods=['DELETE'])
